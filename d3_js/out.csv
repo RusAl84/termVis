@@ -1,0 +1,19 @@
+phrase,count,POS,case,number,gender,person
+показание,2,NOUN,nomn,sing,neut,None
+время измерения,1,phrase,,,,
+18 дней,1,phrase,,,,
+самсунг,1,NOUN,nomn,sing,masc,None
+продавец,1,NOUN,nomn,sing,masc,None
+прибор,1,NOUN,nomn,sing,masc,None
+праздники,1,NOUN,accs,plur,masc,None
+пальцы,1,NOUN,nomn,plur,masc,None
+палец,1,NOUN,accs,sing,masc,None
+отзывы,1,NOUN,nomn,plur,masc,None
+нажатие,1,NOUN,nomn,sing,neut,None
+мерила,1,NOUN,gent,sing,neut,None
+кнопка,1,NOUN,nomn,sing,femn,None
+кардиограмма,1,NOUN,nomn,sing,femn,None
+изображение,1,NOUN,nomn,sing,neut,None
+замер,1,VERB,None,sing,masc,None
+дисплей,1,NOUN,accs,sing,masc,None
+батарейка,1,NOUN,nomn,sing,femn,None
