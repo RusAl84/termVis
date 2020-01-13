@@ -35,7 +35,7 @@ for(var i = 0; i < 10; i++) {
 
 for(var i = 0; i < nodes.length; i++) {
 	for(var j = 0; j < i; j++) {
-		if(Math.random() > .99)
+		if(Math.random() > .6)
 			links.push({
 				source : i,
 				target : j,
