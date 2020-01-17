@@ -3,6 +3,8 @@ import pymorphy2
 import codecs
 import os
 import sys
+
+max_terms = 20
 #Проверка, есть ли файл в директории(Был ли он получен)
 if not os.path.isfile('text.txt'):
     print('text file not exist')
@@ -19,8 +21,9 @@ text_file.close()
 f = codecs.open('term_out\out.csv', 'w', encoding='utf-8')
 f.write(u'phrase' + ',' + 'count' + ',' + 'POS' + ',' + 'case' + ',' + 'number' + ',' + 'gender' + ',' + 'person' +'\n')
 #Извлечение ключевых слов и прочих параментров
+
 term_extractor = TermExtractor()
-for term in term_extractor(text):
+for term in term_extractor(text, max_terms):
     f.write(term.normalized + ',' + str(term.count))
     if term.word_count == 1:
         t = morph.parse(term.normalized)[0]

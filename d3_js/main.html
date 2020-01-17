@@ -2,18 +2,19 @@
 <html lang="en">
 	<head>
 		<meta http-equiv="Cache-Control" content= "no-cache, no-store, must-revalidate">
+		<link rel="stylesheet" href="styles/styles.css">
 		<meta charset="utf-8">
-		<title>Force based label placement</title>
-        <script type="text/javascript" src="hello.js"></script>
+		<title>Визуализация тезауруса</title>
 		<script type="text/javascript" src="d3-v2.js"></script>
-		<script type="text/javascript" src="papaparse.min.js"></script>
+		<script type="text/javascript" src="color-setter.js"></script>
 	</head>
 	<body>
 		<p><b>Вставте текст:</b><br>
-		<textarea name="input" cols="100" rows="15"></textarea></p>
+		<textarea name="input" cols="135" rows="15" placeholder="Вставте текст..."></textarea></p>
 		<form>
-		<p><input type="button" value="Анализировать"></p>
+		<a href="#" class="bAnalyse" onclick="analyse();">Анализировать</a>
 		</form>
+		<div id="graph"></div>
 		<script src="graph_bulder.js"></script>
 	</body>
 </html>

@@ -41,8 +41,8 @@ for(var i = 0; i < nodes.length; i++) {
 			});
 	}
 	labelAnchorLinks.push({
-		source : i * 2,
-		target : i * 2 + 1,
+		source : i * 5,
+		target : i * 4 + 1,
 		weight : 1
 	});
 };

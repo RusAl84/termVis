@@ -1,27 +1,47 @@
-var w = 960, h = 500;
+var w = window.screen.width, h = 700;
 
 var labelDistance = 0;
 
-var vis = d3.select("body").append("svg:svg").attr("width", w).attr("height", h);
-
+var vis
+var rdy = false
 var nodes = [];
 var labelAnchors = [];
 var labelAnchorLinks = [];
 var links = [];
 var termList = [];
 var any = "rr"
-let urlcsv = 'http://localhost:8000/out.csv';
-
-d3.csv(urlcsv, function(data) {
-	window.termList[0] = data[0].phrase
-	console.log(termList[0])
-	//node.label = data[i].phrase
-	//console.log(node.label)
-})
+let urlcsv = 'http://localhost:8000/term_out/out.csv';
+var i = 0
+function test(_callback){
+		d3.csv(urlcsv, function(data) {
+			for(var i = 0; i<data.length;i++){
+				window.termList[i] = data[i]
+				console.log(termList[i])
+			};
+		console.log(i)
+		//build()
+		//node.label = data[i].phrase
+		//console.log(node.label)
+	});
+}
+test()
+function analyse(){
+	build(termList)
+}
 console.log(termList[0])
-for(var i = 0; i < 10; i++) {
+//setTimeout(() => {  build(); }, 1000);
+function build(t){
+
+	if(rdy){
+		clearGraph()
+		rdy = false
+		return
+	}
+vis = d3.select("body").select("#graph").append("svg:svg").attr("width", w).attr("height", h);
+rdy = true 
+for(var i = 0; i < t.length; i++) {
 	var node = {
-		label : termList[0]
+		label : t[i].phrase
 		};
 
 	nodes.push(node);
@@ -33,9 +53,9 @@ for(var i = 0; i < 10; i++) {
 	});
 };
 
-for(var i = 0; i < nodes.length; i++) {
+for(var i = 0; i < t.length; i++) {
 	for(var j = 0; j < i; j++) {
-		if(Math.random() > .6)
+		if(Math.random() > .9)
 			links.push({
 				source : i,
 				target : j,
@@ -62,7 +82,7 @@ force2.start();
 var link = vis.selectAll("line.link").data(links).enter().append("svg:line").attr("class", "link").style("stroke", "#CCC");
 
 var node = vis.selectAll("g.node").data(force.nodes()).enter().append("svg:g").attr("class", "node");
-node.append("svg:circle").attr("r", 5).style("fill", "#555").style("stroke", "#FFF").style("stroke-width", 3);
+node.append("svg:circle").attr("r", 5).style("fill", setColor(t[1].POS)).style("stroke", "#FFF").style("stroke-width", 3);
 node.call(force.drag);
 
 
@@ -89,6 +109,12 @@ var updateLink = function() {
 
 var updateNode = function() {
 	this.attr("transform", function(d) {
+		d.x = Math.max(0,d.x)
+		d.x = Math.min(w,d.x)
+
+		d.y = Math.max(0,d.y)
+		d.y = Math.min(h,d.y)
+		
 		return "translate(" + d.x + "," + d.y + ")";
 	});
 
@@ -127,3 +153,12 @@ force.on("tick", function() {
 	anchorLink.call(updateLink);
 
 });
+}
+function clearGraph(){
+	d3.selectAll("svg").remove();
+	labelDistance = 0;
+	nodes = [];
+	labelAnchors = [];
+	labelAnchorLinks = [];
+	links = [];
+}
