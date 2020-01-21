@@ -1,4 +1,4 @@
-var w = window.screen.width, h = 700;
+var w = $(window).width() - 50, h = 700;
 
 var labelDistance = 0;
 
@@ -9,10 +9,9 @@ var labelAnchors = [];
 var labelAnchorLinks = [];
 var links = [];
 var termList = [];
-var any = "rr"
 let urlcsv = 'http://localhost:8000/term_out/out.csv';
 var i = 0
-function test(_callback){
+function parseTerms(_callback){
 		d3.csv(urlcsv, function(data) {
 			for(var i = 0; i<data.length;i++){
 				window.termList[i] = data[i]
@@ -22,28 +21,54 @@ function test(_callback){
 		//build()
 		//node.label = data[i].phrase
 		//console.log(node.label)
+		_callback()
 	});
 }
-test()
-function analyse(){
+function buildFromReady(){
+	if(termList.length < 1){
+		alert("Готовых данных для построения графа нет. Вставте текст и проанализируйте его.")
+		return
+	}
 	build(termList)
 }
-console.log(termList[0])
+function analyse(){
+	var data = document.getElementById('textToAnalyse').value
+	if (data == ""){
+		alert("Текстовое поле пустое")
+		return
+	}
+	//$.post( "cgi-bin/Ajax.py", function( data ) {
+		//$( ".result" ).html( data );
+	//  });
+	//	$('#form').submit(function(event){
+		//	console.log(123)
+	//		$.post("cgi-bin/ajax.py",{data:$("#textToAnalyse").val()},onResponse);
+//			return false;
+	//	})
+		//function onResponse(data){
+		//	console.log(text(data));
+	//	}
+		
+	jQuery.get("cgi-bin/extract_terms_to_csv.py")
+	parseTerms(function(){
+		build(termList)
+		console.log(termList[0])
+	})
+}
 //setTimeout(() => {  build(); }, 1000);
 function build(t){
 
 	if(rdy){
 		clearGraph()
 		rdy = false
-		return
 	}
+w = $(window).width() - 50
 vis = d3.select("body").select("#graph").append("svg:svg").attr("width", w).attr("height", h);
 rdy = true 
 for(var i = 0; i < t.length; i++) {
 	var node = {
-		label : t[i].phrase
+		label : t[i].phrase,
 		};
-
 	nodes.push(node);
 	labelAnchors.push({
 		node : node
@@ -53,23 +78,28 @@ for(var i = 0; i < t.length; i++) {
 	});
 };
 
+var visLinks = checkMode(t)
+
 for(var i = 0; i < t.length; i++) {
+	var m = visLinks[i]
+	console.log(m)
 	for(var j = 0; j < i; j++) {
-		if(Math.random() > .9)
+		var n = visLinks[j]
+		if(m == n)
 			links.push({
 				source : i,
 				target : j,
-				weight : Math.random()
+				weight : 0.05
 			});
 	}
 	labelAnchorLinks.push({
 		source : i * 2,
 		target : i * 2 + 1,
-		weight : 1
+		weight : 0.1
 	});
 };
 
-var force = d3.layout.force().size([w, h]).nodes(nodes).links(links).gravity(1).linkDistance(50).charge(-3000).linkStrength(function(x) {
+var force = d3.layout.force().size([w, h]).nodes(nodes).links(links).gravity(1).linkDistance(50).charge(-8000).linkStrength(function(x) {
 	return x.weight * 10
 });
 
@@ -81,18 +111,25 @@ force2.start();
 
 var link = vis.selectAll("line.link").data(links).enter().append("svg:line").attr("class", "link").style("stroke", "#CCC");
 
-var node = vis.selectAll("g.node").data(force.nodes()).enter().append("svg:g").attr("class", "node");
-node.append("svg:circle").attr("r", 5).style("fill", setColor(t[1].POS)).style("stroke", "#FFF").style("stroke-width", 3);
+var node = vis.selectAll("svg.svg").data(force.nodes()).enter().append("svg:g").attr("class", "node");
+	node.append("svg:circle").attr("r",function(d, i) {
+		return 5 < t[i].count ? 25 : t[i].count * 7
+	}).style("fill", function(d, i) {
+		return setColor(t[i].POS,t[i].number)
+	}).style("stroke", "#FFF").style("stroke-width", 3);
 node.call(force.drag);
-
 
 var anchorLink = vis.selectAll("line.anchorLink").data(labelAnchorLinks)//.enter().append("svg:line").attr("class", "anchorLink").style("stroke", "#999");
 
 var anchorNode = vis.selectAll("g.anchorNode").data(force2.nodes()).enter().append("svg:g").attr("class", "anchorNode");
 anchorNode.append("svg:circle").attr("r", 0).style("fill", "#FFF");
+	
 	anchorNode.append("svg:text").text(function(d, i) {
 	return i % 2 == 0 ? "" : d.node.label
-}).style("fill", "#555").style("font-family", "Arial").style("font-size", 12);
+}).style("fill", "#555").style("font-family", "Arial").style("font-size", function(d, i) {
+	
+	return i % 2 == 0 ? 0 : 12 * parseInt(t[(i-1)/2].count)/1.2
+});
 
 var updateLink = function() {
 	this.attr("x1", function(d) {
@@ -162,3 +199,32 @@ function clearGraph(){
 	labelAnchorLinks = [];
 	links = [];
 }
+function handleMouseOver(d, i) {  // Add interactivity
+
+	// Use D3 to select element, change color and size
+	d3.select(this).attr({
+	  fill: "orange",
+	  r: radius * 2
+	});
+
+	// Specify where to put label of text
+	svg.append("text").attr({
+	   id: "t" + d.x + "-" + d.y + "-" + i,  // Create an id for text so we can select it later for removing on mouseout
+		x: function() { return xScale(d.x) - 30; },
+		y: function() { return yScale(d.y) - 15; }
+	})
+	.text(function() {
+	  return [d.x, d.y];  // Value of the text
+	});
+  }
+
+function handleMouseOut(d, i) {
+	// Use D3 to select element, change color back to normal
+	d3.select(this).attr({
+	  fill: "black",
+	  r: radius
+	});
+
+	// Select text by id and then remove
+	d3.select("#t" + d.x + "-" + d.y + "-" + i).remove();  // Remove text location
+  }

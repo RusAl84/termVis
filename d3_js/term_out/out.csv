@@ -1,21 +1,21 @@
-phrase,count,POS,case,number,gender,person
-случай,3,NOUN,nomn,sing,masc,None
-инструкция,3,NOUN,nomn,sing,femn,None
-подходящий случай,2,phrase,,,,
-блок switch,2,phrase,,,,
-умолчание,2,NOUN,nomn,sing,neut,None
-случаи,2,NOUN,nomn,plur,masc,None
-значение,2,NOUN,accs,sing,neut,None
-опциональная инструкция break,1,phrase,,,,
-значение искомого выражения,1,phrase,,,,
-строгое сравнение,1,phrase,,,,
-строгий правило,1,phrase,,,,
-соответствующие случай,1,phrase,,,,
-случай default,1,phrase,,,,
-следующая инструкция,1,phrase,,,,
-первый случай,1,phrase,,,,
-какое-то случай,1,phrase,,,,
-соглашение,1,NOUN,nomn,sing,neut,None
-программа,1,NOUN,nomn,sing,femn,None
-выход,1,NOUN,accs,sing,masc,None
-выражение,1,NOUN,accs,sing,neut,None
+phrase,count,POS,case,number,gender,person,animacy,wordCount
+обучение,4,NOUN,nomn,sing,neut,None,inan,1
+ключевые слова,3,phrase,None,None,None,None,None,2
+текст,3,NOUN,nomn,sing,masc,None,inan,1
+слово,3,NOUN,nomn,sing,neut,None,inan,1
+корпус,3,NOUN,accs,sing,masc,None,inan,1
+использование,3,NOUN,accs,sing,neut,None,inan,1
+размеченные корпус,2,phrase,None,None,None,None,None,2
+подобные методы,2,phrase,None,None,None,None,None,2
+решение,2,NOUN,accs,sing,neut,None,inan,1
+основа,2,NOUN,nomn,sing,femn,None,inan,1
+набор,2,NOUN,nomn,sing,masc,None,inan,1
+выделение,2,NOUN,nomn,sing,neut,None,inan,1
+алгоритмы,2,NOUN,nomn,plur,masc,None,inan,1
+функциональный стиль корпусов текстов,1,phrase,None,None,None,None,None,4
+настройка способа принятия решений,1,phrase,None,None,None,None,None,4
+структурированные коллекция текстов,1,phrase,None,None,None,None,None,3
+способы применения корпуса,1,phrase,None,None,None,None,None,3
+созданный силы сообщества,1,phrase,None,None,None,None,None,3
+самые простые методы,1,phrase,None,None,None,None,None,3
+результат работы алгоритма,1,phrase,None,None,None,None,None,3

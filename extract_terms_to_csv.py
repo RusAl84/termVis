@@ -30,7 +30,7 @@ for term in term_extractor(text):
         t = morph.parse(term.normalized)[0]
         f.write(u',' + str(t.tag.POS) + ',' + str(t.tag.case) + ',' + str(t.tag.number) + ',' + str(t.tag.gender) + ',' + str(t.tag.person))
     else:
-        f.write(u',' + 'phrase' + ',' + "" + ',' + "" + ',' + "" + ',' + "")
+        f.write(u',' + 'phrase' + ',' + 'none' + ',' + 'none' + ',' + 'none' + ',' + 'none')
     f.write('\n')
         
 f.close()

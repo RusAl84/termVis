@@ -6,15 +6,47 @@
 		<meta charset="utf-8">
 		<title>Визуализация тезауруса</title>
 		<script type="text/javascript" src="d3-v2.js"></script>
-		<script type="text/javascript" src="color-setter.js"></script>
+		<script type="text/javascript" src="data-checker.js"></script>
+		<script type="text/javascript" src="jquery.js"></script>
 	</head>
-	<body>
-		<p><b>Вставте текст:</b><br>
-		<textarea name="input" cols="135" rows="15" placeholder="Вставте текст..."></textarea></p>
-		<form>
+	<body bgcolor ="#f0f0f0">
+		<field href="#" class = "Content-Field">
+		<form id="form" method="POST">
+		<textarea id = "textToAnalyse" name="textcontent" cols="135" rows="15" placeholder="Вставте текст..."></textarea>
 		<a href="#" class="bAnalyse" onclick="analyse();">Анализировать</a>
 		</form>
-		<div id="graph"></div>
+		<c href ="#" class="Buttons">
+		<b href="#" class="Gtext">Методы построения графа</b>
+		<label class="container">Часть речи
+			<input type="radio" checked="checked" name="radio" id="POSRadio">
+			<span class="checkmark"></span>
+		  </label>
+		  <label class="container">Падеж
+			<input type="radio" checked="checked" name="radio" id="caseRadio">
+			<span class="checkmark"></span>
+		  </label>
+		  <label class="container">Число
+			<input type="radio" checked="checked" name="radio" id="numberRadio">
+			<span class="checkmark"></span>
+		  </label>
+		  <label class="container">Род
+			<input type="radio" checked="checked" name="radio" id="genderRadio">
+			<span class="checkmark"></span>
+		  </label>
+		  <label class="container">Одушевленность
+			<input type="radio" checked="checked" name="radio" id="animacyRadio">
+			<span class="checkmark"></span>
+		  </label>
+		  <label class="container">Количество слов
+			<input type="radio" checked="checked" name="radio" id="wordCountRadio">
+			<span class="checkmark"></span>
+		  </label>
+		  <label class="container">Важность слов
+			<input type="radio" checked="checked" name="radio" id="wordImpRadio">
+			<span class="checkmark"></span>
+		  </label></c>
+		  <a href="#" class="bAnalyse" onclick="buildFromReady();">Перестроить</a></field>
+		<div align ="center" id="graph"></div>
 		<script src="graph_bulder.js"></script>
-	</body>
+	</bodybgcolor="#c0c0c0">
 </html>
