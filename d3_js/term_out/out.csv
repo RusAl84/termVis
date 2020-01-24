@@ -1,21 +1,21 @@
 phrase,count,POS,case,number,gender,person,animacy,wordCount
-обучение,4,NOUN,nomn,sing,neut,None,inan,1
-ключевые слова,3,phrase,None,None,None,None,None,2
-текст,3,NOUN,nomn,sing,masc,None,inan,1
-слово,3,NOUN,nomn,sing,neut,None,inan,1
-корпус,3,NOUN,accs,sing,masc,None,inan,1
-использование,3,NOUN,accs,sing,neut,None,inan,1
-размеченные корпус,2,phrase,None,None,None,None,None,2
-подобные методы,2,phrase,None,None,None,None,None,2
-решение,2,NOUN,accs,sing,neut,None,inan,1
-основа,2,NOUN,nomn,sing,femn,None,inan,1
-набор,2,NOUN,nomn,sing,masc,None,inan,1
-выделение,2,NOUN,nomn,sing,neut,None,inan,1
-алгоритмы,2,NOUN,nomn,plur,masc,None,inan,1
-функциональный стиль корпусов текстов,1,phrase,None,None,None,None,None,4
-настройка способа принятия решений,1,phrase,None,None,None,None,None,4
-структурированные коллекция текстов,1,phrase,None,None,None,None,None,3
-способы применения корпуса,1,phrase,None,None,None,None,None,3
-созданный силы сообщества,1,phrase,None,None,None,None,None,3
-самые простые методы,1,phrase,None,None,None,None,None,3
-результат работы алгоритма,1,phrase,None,None,None,None,None,3
+человек,8,NOUN,nomn,sing,masc,None,anim,1
+время,5,NOUN,accs,sing,neut,None,inan,1
+информация,4,NOUN,nomn,sing,femn,None,inan,1
+поиск,3,NOUN,nomn,sing,masc,None,inan,1
+документы,3,NOUN,accs,plur,masc,None,inan,1
+общая картина,2,phrase,None,None,None,None,None,2
+ключевые слово,2,phrase,None,None,None,None,None,2
+визуальная информация,2,phrase,None,None,None,None,None,2
+визуализация информации,2,phrase,None,None,None,None,None,2
+центр,2,NOUN,nomn,sing,masc,None,inan,1
+факт,2,NOUN,nomn,sing,masc,None,inan,1
+смысл,2,NOUN,nomn,sing,masc,None,inan,1
+сложность,2,NOUN,nomn,sing,femn,None,inan,1
+следствие,2,NOUN,nomn,sing,neut,None,inan,1
+ресурсы,2,NOUN,nomn,plur,masc,None,inan,1
+работа,2,NOUN,nomn,sing,femn,None,inan,1
+процент,2,NOUN,nomn,sing,masc,None,inan,1
+проблема,2,NOUN,nomn,sing,femn,None,inan,1
+предприятие,2,NOUN,nomn,sing,neut,None,inan,1
+пользователь,2,NOUN,nomn,sing,masc,None,anim,1

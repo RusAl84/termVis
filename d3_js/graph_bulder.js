@@ -1,4 +1,4 @@
-var w = $(window).width() - 50, h = 700;
+var w = $(window).width() - 50, h = 1000;
 
 var labelDistance = 0;
 
@@ -9,18 +9,15 @@ var labelAnchors = [];
 var labelAnchorLinks = [];
 var links = [];
 var termList = [];
-let urlcsv = 'http://localhost:8000/term_out/out.csv';
+let urlcsv = window.location.protocol + '//' + window.location.host + '/term_out/out.csv';
 var i = 0
+console.log(window.location.host)
 function parseTerms(_callback){
 		d3.csv(urlcsv, function(data) {
 			for(var i = 0; i<data.length;i++){
 				window.termList[i] = data[i]
 				console.log(termList[i])
 			};
-		console.log(i)
-		//build()
-		//node.label = data[i].phrase
-		//console.log(node.label)
 		_callback()
 	});
 }
@@ -115,7 +112,7 @@ var node = vis.selectAll("svg.svg").data(force.nodes()).enter().append("svg:g").
 	node.append("svg:circle").attr("r",function(d, i) {
 		return 5 < t[i].count ? 25 : t[i].count * 7
 	}).style("fill", function(d, i) {
-		return setColor(t[i].POS,t[i].number)
+		return setColor(t[i].POS,t[i].number,t[i].wordCount)
 	}).style("stroke", "#FFF").style("stroke-width", 3);
 node.call(force.drag);
 
@@ -126,11 +123,12 @@ anchorNode.append("svg:circle").attr("r", 0).style("fill", "#FFF");
 	
 	anchorNode.append("svg:text").text(function(d, i) {
 	return i % 2 == 0 ? "" : d.node.label
-}).style("fill", "#555").style("font-family", "Arial").style("font-size", function(d, i) {
-	
-	return i % 2 == 0 ? 0 : 12 * parseInt(t[(i-1)/2].count)/1.2
-});
-
+}).style("fill", "#555")
+.style("font-size", function(d, i) {
+	var out 
+	out = i % 2 == 0 ? 0 : 12 * parseInt(t[(i-1)/2].count)/1.2
+return String(out,"px")
+}).style("font-family", "Arial")
 var updateLink = function() {
 	this.attr("x1", function(d) {
 		return d.source.x;
