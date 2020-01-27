@@ -4,9 +4,9 @@
 		<link rel="stylesheet" href="styles/styles.css">
 		<meta charset="utf-8">
 		<title>Визуализация тезауруса</title>
-		<script type="text/javascript" src="d3-v2.js"></script>
-		<script type="text/javascript" src="data-checker.js"></script>
-		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="scripts/d3-v2.js"></script>
+		<script type="text/javascript" src="scripts/data-checker.js"></script>
+		<script type="text/javascript" src="scripts/jquery.js"></script>
 	</head>
 	<body bgcolor ="#f0f0f0">
 		<field href="#" class = "Content-Field">
@@ -45,7 +45,54 @@
 			<span class="checkmark"></span>
 		  </label></c>
 		  <a href="#" class="bAnalyse" onclick="buildFromReady();">Перестроить</a></field>
-		<div align ="center" id="graph"></div>
-		<script src="graph_bulder.js"></script>
+	<d>
+			<label>
+				<div class="clr red">
+					<p id="clrText">Существительное ед.</p>
+				</div>
+			</label>
+			<label>
+			<div class="clr viol">
+					<p id="clrText">Существительное множ.</p>
+				</div>
+			</label>
+			<label>
+				<div class="clr green">
+						<p id="clrText">Фраза из 2 слов</p>
+					</div>
+			</label>
+			<label>
+				<div class="clr orange">
+						<p id="clrText">Фраза из 3 слов</p>
+					</div>
+			</label>
+			<label>
+				<div class="clr black">
+						<p id="clrText">В фразе больше 3 слов</p>
+					</div>
+			</label>
+			<label>
+				<div class="clr yellow">
+						<p id="clrText">Прилагательное</p>
+					</div>
+			</label>
+			<label>
+				<div class="clr blue">
+						<p id="clrText">Глагол</p>
+					</div>
+			</label>
+			<label>
+				<div class="clr aqua">
+						<p id="clrText">Наречие</p>
+					</div>
+			</label>
+			<label>
+				<div class="clr gray">
+						<p id="clrText">Не определено</p>
+					</div>
+			</label>
+	</d>
+	<div align ="center" id="graph"></div>
+	<script src="scripts/graph_bulder.js"></script>
 	</bodybgcolor="#c0c0c0">
 </html>

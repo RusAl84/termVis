@@ -136,3 +136,45 @@ field.Content-Field{
     text-align: center;
     display: block;
   }
+
+  .clr{
+    width: 15px;
+    height: 15px;
+    margin: 5px;
+    border: solid rgba(0, 0, 0, 0.075);
+  }
+  #clrText{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    margin-top: 0px;
+    margin-left: 20px;
+    white-space: nowrap;
+  }
+
+  .red{
+    background: rgb( 230, 80, 91 );
+  }
+  .viol{
+    background: rgb( 138,43,226)
+  }
+  .green{
+    background: rgb( 43, 203, 71 );
+  }
+  .orange{
+    background: rgb(255,127,80);
+  }
+  .black{
+    background: rgb( 30, 30, 30 );
+  }
+  .yellow{
+    background: rgb( 200, 200, 0 );
+  }
+  .blue{
+    background: rgb( 33, 100, 200 );
+  }
+  .aqua{
+    background: rgb( 48, 216, 200 );
+  }
+  .gray{
+    background: rgb( 150, 150, 150 );
+  }

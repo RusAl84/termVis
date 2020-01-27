@@ -1,4 +1,3 @@
-# -*- coding: utf-8  -*-
 import cgi
 storage = cgi.FieldStorage()
 data = storage.getvalue('data')

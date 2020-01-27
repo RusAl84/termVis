@@ -1,4 +1,4 @@
-var w = $(window).width() - 50, h = 1000;
+var w = $(window).width() - 50, h = 800;
 
 var labelDistance = 0;
 
@@ -16,7 +16,6 @@ function parseTerms(_callback){
 		d3.csv(urlcsv, function(data) {
 			for(var i = 0; i<data.length;i++){
 				window.termList[i] = data[i]
-				console.log(termList[i])
 			};
 		_callback()
 	});
@@ -29,27 +28,28 @@ function buildFromReady(){
 	build(termList)
 }
 function analyse(){
-	var data = document.getElementById('textToAnalyse').value
-	if (data == ""){
+	var datas = document.getElementById('textToAnalyse').value
+	console.log(datas)
+	if (datas == ""){
 		alert("Текстовое поле пустое")
 		return
 	}
-	//$.post( "cgi-bin/Ajax.py", function( data ) {
-		//$( ".result" ).html( data );
-	//  });
-	//	$('#form').submit(function(event){
-		//	console.log(123)
-	//		$.post("cgi-bin/ajax.py",{data:$("#textToAnalyse").val()},onResponse);
-//			return false;
-	//	})
-		//function onResponse(data){
-		//	console.log(text(data));
-	//	}
+	$.post( "cgi-bin/Ajax.py", function( data ) {
+		$( ".result" ).html( datas );
+		console.log(data)
+	  });
+		$('#form').submit(function(event){
+			console.log(123)
+			$.post("cgi-bin/ajax.py",{data:$("#textToAnalyse").val()},onResponse);
+			return false;
+		})
+		function onResponse(data){
+			console.log(text(data));
+		}
 		
 	jQuery.get("cgi-bin/extract_terms_to_csv.py")
 	parseTerms(function(){
 		build(termList)
-		console.log(termList[0])
 	})
 }
 //setTimeout(() => {  build(); }, 1000);
@@ -79,7 +79,6 @@ var visLinks = checkMode(t)
 
 for(var i = 0; i < t.length; i++) {
 	var m = visLinks[i]
-	console.log(m)
 	for(var j = 0; j < i; j++) {
 		var n = visLinks[j]
 		if(m == n)
@@ -117,7 +116,7 @@ var node = vis.selectAll("svg.svg").data(force.nodes()).enter().append("svg:g").
 node.call(force.drag);
 
 var anchorLink = vis.selectAll("line.anchorLink").data(labelAnchorLinks)//.enter().append("svg:line").attr("class", "anchorLink").style("stroke", "#999");
-
+ 
 var anchorNode = vis.selectAll("g.anchorNode").data(force2.nodes()).enter().append("svg:g").attr("class", "anchorNode");
 anchorNode.append("svg:circle").attr("r", 0).style("fill", "#FFF");
 	
@@ -126,7 +125,7 @@ anchorNode.append("svg:circle").attr("r", 0).style("fill", "#FFF");
 }).style("fill", "#555")
 .style("font-size", function(d, i) {
 	var out 
-	out = i % 2 == 0 ? 0 : 12 * parseInt(t[(i-1)/2].count)/1.2
+	out = i % 2 == 0 ? 0 : 12 * parseInt(t[(i-1)/2].count)/t[t.length - 1].count
 return String(out,"px")
 }).style("font-family", "Arial")
 var updateLink = function() {
