@@ -1,0 +1,21 @@
+phrase,count,POS,case,number,gender,person,animacy,wordCount
+текстовая информация,4,phrase,None,None,None,None,None,2
+разработка,4,NOUN,nomn,sing,femn,None,inan,1
+область,3,NOUN,nomn,sing,femn,None,inan,1
+задача,3,NOUN,nomn,sing,femn,None,inan,1
+данный программное обеспечение,2,phrase,None,None,None,None,None,3
+программное комплекс,2,phrase,None,None,None,None,None,2
+поставленная задача,2,phrase,None,None,None,None,None,2
+компьютерная лингвистика,2,phrase,None,None,None,None,None,2
+ключевые слова,2,phrase,None,None,None,None,None,2
+визуализация тезауруса,2,phrase,None,None,None,None,None,2
+обработка,2,NOUN,nomn,sing,femn,None,inan,1
+использование,2,NOUN,accs,sing,neut,None,inan,1
+информация,2,NOUN,nomn,sing,femn,None,inan,1
+извлечение,2,NOUN,accs,sing,neut,None,inan,1
+визуализация,2,NOUN,nomn,sing,femn,None,inan,1
+алгоритмы,2,NOUN,nomn,plur,masc,None,inan,1
+разработка метода анализа текста,1,phrase,None,None,None,None,None,4
+математические методы анализа текста,1,phrase,None,None,None,None,None,4
+точные математические вычисления,1,phrase,None,None,None,None,None,3
+современная компьютерная лингвистика,1,phrase,None,None,None,None,None,3
