@@ -1,15 +1,21 @@
 phrase,count,POS,case,number,gender,person,animacy,wordCount
-критерий построения узлов графа,1,phrase,None,None,None,None,None,4
-цвет вершин,1,phrase,None,None,None,None,None,2
-параметры пользователя,1,phrase,None,None,None,None,None,2
-невзвешенный граф,1,phrase,None,None,None,None,None,2
-ключевые слово,1,phrase,None,None,None,None,None,2
-данная анимация,1,phrase,None,None,None,None,None,2
-группировка слов,1,phrase,None,None,None,None,None,2
-экран,1,NOUN,accs,sing,masc,None,inan,1
-фраза,1,NOUN,nomn,sing,femn,None,inan,1
-узлы,1,NOUN,nomn,plur,masc,None,inan,1
-род,1,NOUN,nomn,sing,masc,None,inan,1
-результат,1,NOUN,nomn,sing,masc,None,inan,1
-построение,1,NOUN,nomn,sing,neut,None,inan,1
-вершина,1,NOUN,nomn,sing,femn,None,inan,1
+текстовая информация,4,phrase,None,None,None,None,None,2
+разработка,4,NOUN,nomn,sing,femn,None,inan,1
+область,3,NOUN,nomn,sing,femn,None,inan,1
+задача,3,NOUN,nomn,sing,femn,None,inan,1
+данный программное обеспечение,2,phrase,None,None,None,None,None,3
+программное комплекс,2,phrase,None,None,None,None,None,2
+поставленная задача,2,phrase,None,None,None,None,None,2
+компьютерная лингвистика,2,phrase,None,None,None,None,None,2
+ключевые слова,2,phrase,None,None,None,None,None,2
+визуализация тезауруса,2,phrase,None,None,None,None,None,2
+обработка,2,NOUN,nomn,sing,femn,None,inan,1
+использование,2,NOUN,accs,sing,neut,None,inan,1
+информация,2,NOUN,nomn,sing,femn,None,inan,1
+извлечение,2,NOUN,accs,sing,neut,None,inan,1
+визуализация,2,NOUN,nomn,sing,femn,None,inan,1
+алгоритмы,2,NOUN,nomn,plur,masc,None,inan,1
+разработка метода анализа текста,1,phrase,None,None,None,None,None,4
+математические методы анализа текста,1,phrase,None,None,None,None,None,4
+точные математические вычисления,1,phrase,None,None,None,None,None,3
+современная компьютерная лингвистика,1,phrase,None,None,None,None,None,3

@@ -13,6 +13,7 @@ let urlcsv = window.location.protocol + '//' + window.location.host + '/term_out
 var i = 0
 console.log(window.location.host)
 function parseTerms(_callback){
+		termList = []
 		d3.csv(urlcsv, function(data) {
 			for(var i = 0; i<data.length;i++){
 				window.termList[i] = data[i]
@@ -29,28 +30,18 @@ function buildFromReady(){
 }
 function analyse(){
 	var datas = document.getElementById('textToAnalyse').value
-	console.log(datas)
 	if (datas == ""){
 		alert("Текстовое поле пустое")
 		return
 	}
-	$.post( "cgi-bin/Ajax.py", function( data ) {
-		$( ".result" ).html( datas );
-		console.log(data)
-	  });
-		$('#form').submit(function(event){
-			console.log(123)
-			$.post("cgi-bin/ajax.py",{data:$("#textToAnalyse").val()},onResponse);
-			return false;
+
+	$.post("cgi-bin/save_text.py",{data:datas},function(){
+		jQuery.get("cgi-bin/extract_terms_to_csv.py")
+		parseTerms(function(){
+			build(termList)
 		})
-		function onResponse(data){
-			console.log(text(data));
-		}
-		
-	jQuery.get("cgi-bin/extract_terms_to_csv.py")
-	parseTerms(function(){
-		build(termList)
 	})
+	
 }
 //setTimeout(() => {  build(); }, 1000);
 function build(t){
@@ -105,11 +96,11 @@ force.start();
 var force2 = d3.layout.force().nodes(labelAnchors).links(labelAnchorLinks).gravity(0).linkDistance(0).linkStrength(8).charge(-100).size([w, h]);
 force2.start();
 
-var link = vis.selectAll("line.link").data(links).enter().append("svg:line").attr("class", "link").style("stroke", "#CCC");
+var link = vis.selectAll("line.link").data(links).enter().append("svg:line").attr("class", "link").style("stroke", "#555");
 
 var node = vis.selectAll("svg.svg").data(force.nodes()).enter().append("svg:g").attr("class", "node");
 	node.append("svg:circle").attr("r",function(d, i) {
-		return 5 < t[i].count ? 25 : t[i].count * 7
+		return 5 < t[i].count ? 25 : t[i].count * 7 / t[t.length - 1].count
 	}).style("fill", function(d, i) {
 		return setColor(t[i].POS,t[i].number,t[i].wordCount)
 	}).style("stroke", "#FFF").style("stroke-width", 3);
