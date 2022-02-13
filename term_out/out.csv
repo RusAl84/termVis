@@ -1,0 +1,21 @@
+phrase,count,POS,case,number,gender,person,animacy,wordCount
+вирджиния,4,NOUN,nomn,sing,femn,None,anim,1
+риа,3,NOUN,nomn,sing,neut,None,inan,1
+новости,3,NOUN,nomn,plur,femn,None,inan,1
+территориальные вода россии,2,phrase,None,None,None,None,None,3
+американская подлодка,2,phrase,None,None,None,None,None,2
+эксперт,2,NOUN,nomn,sing,masc,None,anim,1
+шапошников,2,NOUN,nomn,sing,masc,None,anim,1
+фрегат,2,NOUN,nomn,sing,masc,None,inan,1
+москва,2,NOUN,nomn,sing,femn,None,inan,1
+минобороны,2,NOUN,gent,sing,neut,None,inan,1
+маршал,2,NOUN,nomn,sing,masc,None,anim,1
+navy photo courtesy of general dynamics electric boat,1,phrase,None,None,None,None,None,8
+караульный американская подводная лодка uss mississippi типа,1,phrase,None,None,None,None,None,7
+подводная лодки сша типа,1,phrase,None,None,None,None,None,4
+американская подводная лодка типа,1,phrase,None,None,None,None,None,4
+специальные бомбомётные установка,1,phrase,None,None,None,None,None,3
+российские территориальные воды,1,phrase,None,None,None,None,None,3
+подлодка вмс сша,1,phrase,None,None,None,None,None,3
+независимое военное обозрение,1,phrase,None,None,None,None,None,3
+данный случай информации,1,phrase,None,None,None,None,None,3
